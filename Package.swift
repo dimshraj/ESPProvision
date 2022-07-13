@@ -26,7 +26,7 @@ let package = Package(
     targets: [
         .target(
        name: "ESPProvision",
-       dependencies: ["Curve25519", "SwiftProtobuf","ESPProvisionObjC"],
+       dependencies: ["ESPProvisionObjC"],
        path: "Sources/ESPProvision"),
         .target(
        name: "ESPProvisionObjC",
