@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "ESPProvision",
-            targets: ["ESPProvision","ESPProvisionObjC"]),
+            targets: ["ESPProvision"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.1.0"),
@@ -19,11 +19,10 @@ let package = Package(
     targets: [
         .target(
        name: "ESPProvision",
-       dependencies: ["Curve25519", "swift-protobuf"],
+       dependencies: ["Curve25519", "swift-protobuf","ESPProvisionObjC"],
        path: "Sources/ESPProvision"),
         .target(
        name: "ESPProvisionObjC",
-	dependencies: ["Curve25519", "swift-protobuf"],
        path: "Sources/ESPProvisionObjC"),
     ]
 )
