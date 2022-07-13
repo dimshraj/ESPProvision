@@ -3,7 +3,6 @@
 
 import PackageDescription
 
-
 let package = Package(
     name: "ESPProvision",
     products: [
@@ -12,17 +11,27 @@ let package = Package(
             targets: ["ESPProvision"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.1.0"),
-        .package(url: "https://github.com/christophhagen/Curve25519.git" , from: "1.5.0"),
+        .package(
+              name: "Curve25519",
+              url: "https://github.com/christophhagen/Curve25519.git",
+              from: "2.0.0"
+          ),
+          .package(
+              name: "SwiftProtobuf",
+              url: "https://github.com/apple/swift-protobuf.git",
+              "1.15.0" ..< "2.0.0"
+          ),
     ],
 
     targets: [
         .target(
        name: "ESPProvision",
-       dependencies: ["Curve25519", "swift-protobuf","ESPProvisionObjC"],
+       dependencies: ["Curve25519", "SwiftProtobuf","ESPProvisionObjC"],
        path: "Sources/ESPProvision"),
         .target(
        name: "ESPProvisionObjC",
+       dependencies: ["Curve25519", "SwiftProtobuf"],
        path: "Sources/ESPProvisionObjC"),
     ]
 )
+
